@@ -3,29 +3,39 @@ import java.util.Scanner;
 public class Main {
     static Scanner userInput;
     static Bank bank;
-    public static void main(String[] args) {
-        System.out.println("Do you have an account? ");
-        System.out.println("1. Yes\n2. No");
-        int input = Integer.parseInt(userInput.nextLine());
-        switch (input) {
-            case 1:
-                loginActionAndFollowUp();
-                break;
-            case 2:
-                createAnAccount();
-                break;
-            default:
-                System.out.println("Bye!");
-        }
 
+    public static void main(String[] args) {
+        userInput = new Scanner(System.in);
+        bank = new Bank();
+
+        boolean running = true;
+        while (running) {
+            System.out.println("Welcome, what do you want to do?");
+            System.out.println("1. Login\n2. Create account\n3. Exit");
+            int input = Integer.parseInt(userInput.nextLine());
+            switch (input) {
+                case 1:
+                    loginActionAndFollowUp();
+                    break;
+                case 2:
+                    createAnAccount();
+                    break;
+                case 3:
+                    System.out.println("Goodbye!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid option selected.");
+            }
+        }
     }
 
     public static void options() {
-        System.out.println("What action do you want to do?\n1. Deposit money\n2. Withdraw money\n3. Delete account\n4. Exit");
+        System.out.println("What action do you want to do?\n1. Deposit money\n2. Withdraw money\n3. Delete account\n4. Logout");
     }
 
     public static void loginActionAndFollowUp() {
-        for(int attempts = 0; attempts < 3; ++attempts) {
+        for (int attempts = 0; attempts < 3; ++attempts) {
             System.out.println("Please login.");
             System.out.println("Your username: ");
             String username = userInput.nextLine();
@@ -37,14 +47,11 @@ public class Main {
                     options();
                     action = Integer.parseInt(userInput.nextLine());
                     chosenAction(action);
-                } while(action != 4);
-
+                } while (action != 4);
                 return;
             }
-
             System.out.println("Login failed. Please try again.");
         }
-
         System.out.println("Login failed after multiple attempts.");
     }
 
@@ -59,7 +66,6 @@ public class Main {
         System.out.println("Your password: ");
         String password = userInput.nextLine();
         bank.createAccount(firstname, lastname, username, password);
-        loginActionAndFollowUp();
     }
 
     public static void chosenAction(int action) {
@@ -84,17 +90,11 @@ public class Main {
                 }
                 break;
             case 4:
-                System.out.println("See you soon!");
+                System.out.println("Logged out successfully.");
                 bank.logout();
                 break;
             default:
                 System.out.println("Invalid option selected.");
         }
-
-    }
-
-    static {
-        userInput = new Scanner(System.in);
-        bank = new Bank();
     }
 }
