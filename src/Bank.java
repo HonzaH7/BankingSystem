@@ -1,12 +1,14 @@
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+import java.sql.Connection;
 
 public class Bank {
     private Account currentAccount;
     private Connection connection;
+    private boolean accountDeleted;
 
     public Bank() {
         try {
@@ -14,10 +16,12 @@ public class Bank {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        accountDeleted = false;
     }
 
     public Account login(String username, String password) {
         try {
+            accountDeleted = false;
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts WHERE userName = ? AND password = ?");
             statement.setString(1, username);
             statement.setString(2, password);
@@ -43,8 +47,16 @@ public class Bank {
         }
     }
 
-    public void createAccount(String firstName, String lastName, String userName, String password) {
+    public void createAccount(Scanner userInput, String firstName, String lastName, String userName, String password) {
         try {
+            boolean usernameUnique = isUsernameUnique(userName);
+
+            while (!usernameUnique) {
+                System.out.println("Username already in use.\nPlease choose a different username:");
+                userName = userInput.nextLine();
+                usernameUnique = isUsernameUnique(userName);
+            }
+
             PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts (firstName, lastName, userName, password, balance) VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
@@ -56,6 +68,15 @@ public class Bank {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean isUsernameUnique(String userName) throws SQLException {
+        PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM accounts WHERE username = ?");
+        checkStatement.setString(1, userName);
+        ResultSet resultSet = checkStatement.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+        return count == 0;
     }
 
     public void logout() {
@@ -118,6 +139,7 @@ public class Bank {
                 if (rowsAffected > 0) {
                     System.out.println("Account deleted successfully.");
                     this.currentAccount = null;
+                    accountDeleted = true;
                 } else {
                     System.out.println("Delete account failed.");
                 }
@@ -127,5 +149,13 @@ public class Bank {
         } else {
             System.out.println("No user is currently logged in to delete an account.");
         }
+    }
+
+    public boolean isAccountDeleted() {
+        return accountDeleted;
+    }
+
+    public Account getCurrentAccount() {
+        return currentAccount;
     }
 }

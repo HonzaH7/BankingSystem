@@ -44,6 +44,9 @@ public class Main {
             if (bank.login(username, password) != null) {
                 int action;
                 do {
+                    if (bank.isAccountDeleted()) {
+                        return;
+                    }
                     options();
                     action = Integer.parseInt(userInput.nextLine());
                     chosenAction(action);
@@ -65,7 +68,7 @@ public class Main {
         String username = userInput.nextLine();
         System.out.println("Your password: ");
         String password = userInput.nextLine();
-        bank.createAccount(firstname, lastname, username, password);
+        bank.createAccount(userInput, firstname, lastname, username, password);
     }
 
     public static void chosenAction(int action) {
