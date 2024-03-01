@@ -37,9 +37,9 @@ public class Bank {
             return null;
         }
     }
+    //Don't know how to split it correctly. Want to get rid of the try catch
 
     public void createAccount(Scanner userInput, String firstName, String lastName, String userName, String password) {
-        try {
             boolean usernameUnique = isUsernameUnique(userName);
 
             while (!usernameUnique) {
@@ -51,12 +51,9 @@ public class Bank {
             REQUEST.createAccountRequest(firstName, lastName, userName, password);
 
             System.out.println("Account created successfully.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
-    private boolean isUsernameUnique(String userName) throws SQLException {
+    private boolean isUsernameUnique(String userName) {
         return REQUEST.isUsernameUniqueRequest(userName) == 0;
     }
 

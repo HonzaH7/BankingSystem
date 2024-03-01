@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eff95a6c-346b-4230-bc10-e1d530238147" name="Changes" comment="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="eff95a6c-346b-4230-bc10-e1d530238147" name="Changes" comment="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor&#10;1.3.2024, fixed bugs, refactored 80%, code is working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektiky2024.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Projektiky2024.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SQLRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SQLRequests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709223212713</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor&#10;1.3.2024, fixed bugs, refactored 80%, code is working">
+      <option name="closed" value="true" />
+      <created>1709281135851</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709281135851</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -116,6 +119,7 @@
     <MESSAGE value="18.2.2024, created" />
     <MESSAGE value="18.2.2024, created&#10;23.2.2024, added database" />
     <MESSAGE value="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor" />
+    <MESSAGE value="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor&#10;1.3.2024, fixed bugs, refactored 80%, code is working" />
+    <option name="LAST_COMMIT_MESSAGE" value="18.2.2024, created&#10;23.2.2024, added database&#10;29.2.2024, fixed login, trying to refactor&#10;1.3.2024, fixed bugs, refactored 80%, code is working" />
   </component>
 </project>

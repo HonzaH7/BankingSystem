@@ -98,4 +98,3 @@ public class SQLRequests {
         return false;
     }
 }
-
