@@ -1,3 +1,4 @@
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class Main {
@@ -6,7 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
         userInput = new Scanner(System.in);
-        bank = new Bank();
+        Connection connection = DatabaseConnection.getConnection();
+        SQLRequests sqlRequests = new SQLRequests(connection);
+        bank = new Bank(sqlRequests);
 
         boolean running = true;
         while (running) {
